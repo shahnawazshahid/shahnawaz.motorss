@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Images with Price</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        .car-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 280px;
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .car-card:hover {
+            transform: scale(1.05);
+        }
+
+        .car-card img {
+            width: 100%;
+            height: auto;
+            border-bottom: 2px solid #ccc;
+        }
+
+        .price-tab {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .price-tab:hover {
+            background-color: #45a049;
+        }
+
+        .purchased {
+            background-color: #f44336;
+        }
+
+        .price {
+            font-size: 22px;
+            margin: 20px 0;
+        }
+
+                @media (max-width: 1024px) {
+            .container {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .car-card {
+                width: 90%;
+                margin-bottom: 20px;
+            }
+        }
+        .nav-button {
+            font-size: 18px;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #333;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+footer p {
+    font-size: 14px;
+}
+    </style>
+</head>
+<body><nav>
+    <a href="index.html" class="nav-button">Home</a>
+</nav>
+
+    
+    <div class="container">
+       <div class="car-card" id="car1">
+            <img src="images/suv.jpg" alt="Car 1">
+            <div class="price-tab" onclick="togglePrice('car1')">Price: £20,000</div>
+        </div>
+
+        <div class="car-card" id="car2">
+            <img src="images/suv2.jpg" alt="Car 2">
+            <div class="price-tab" onclick="togglePrice('car2')">Price: £12,000</div>
+        </div>
+
+       
+        <div class="car-card" id="car3">
+            <img src="images/suv3.jpg" alt="Car 3">
+            <div class="price-tab" onclick="togglePrice('car3')">Price: £10,000</div>
+        </div>
+
+       
+        <div class="car-card" id="car4">
+            <img src="images/suv4.jpg" alt="Car 4">
+            <div class="price-tab" onclick="togglePrice('car4')">Price: £18,000</div>
+        </div>
+    </div>
+
+    <script>
+        function togglePrice(carId) {
+            const carCard = document.getElementById(carId);
+            const priceTab = carCard.querySelector('.price-tab');
+
+            if (priceTab.textContent.includes('Price')) {
+                priceTab.textContent = 'Purchased';
+                priceTab.classList.add('purchased');
+            } else {
+                priceTab.textContent = carId === 'car1' ? 'Price: £20,000' :
+                                      carId === 'car2' ? 'Price: £12,000' :
+                                      carId === 'car3' ? 'Price: £10,000' : 'Price: £18,000';
+                priceTab.classList.remove('purchased');
+            }
+        }
+    </script>
+    <footer>
+        <p> @2024 SHAHNAWAZ MOTORS, ALL RIGHTS RESERVED.</p>
+    </footer>
+</body>
+</html>
